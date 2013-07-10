@@ -80,7 +80,7 @@ if(gTestList.COSTS == true) {
             costType: 'FBA',
             productPrice: 25.00,
             inboundDelivery: 1.00,
-            prepService: 2.00
+            prepService: 1.00
           }
         };
 
@@ -102,14 +102,14 @@ if(gTestList.COSTS == true) {
           cost: {
             costType: 'FBM',
             productPrice: 25.00,
-            shipping: 1,
-            orderHandling: 2,
-            pickPack: 3,
-            outboundDelivery: 4,
-            storage: 5,
-            inboundDelivery: 6,
-            customerService: 7,
-            prepService: 8
+            shipping: 1.00,
+            orderHandling: 1.00,
+            pickPack: 1.00,
+            outboundDelivery: 1.00,
+            storage: 1.00,
+            inboundDelivery: 1.00,
+            customerService: 1.00,
+            prepService: 1.00
           }
         };
 
