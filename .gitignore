@@ -1,0 +1,30 @@
+# Ignored Git Files and Folders
+#
+# This file should be in the repo root folder.
+#
+# If there is files to be commit when run "git status"
+#
+#   "git rm --cache . -r"   // Clear cache
+#   "git add ."             // Add all files
+#
+#   or
+#
+#   "git rm filename" or "git rm dirname -r"
+#
+
+# Dynamic files and folders
+#
+#   Example:  node_modules/
+#
+node_modules/
+
+# Files and folders for apps
+#
+#   Example:  /.tmp-file-*
+#             /tmp-data/*
+#
+
+# Symbolic links. (Do not add / end of path!)
+#
+#   Example:  /symlink*
+#

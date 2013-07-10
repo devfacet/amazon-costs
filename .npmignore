@@ -1,0 +1,9 @@
+# Ignored NPM Files and Folders
+
+# Dynamic files and folders
+#
+#   Example:  node_modules/
+#             .git/
+#
+node_modules/
+.git/

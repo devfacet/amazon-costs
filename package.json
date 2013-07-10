@@ -1,0 +1,24 @@
+{
+  "name": "amazon-costs",
+  "version": "0.0.1",
+  "description": "Amazon Costs module can be used for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.",
+  "keywords": ["amazon", "costs", "fulfillment", "merchant", "fba", "fbm"],
+  "homepage": "http://github.com/cmfatih/amazon-costs",
+  "repository": {"type": "git", "url": "https://github.com/cmfatih/amazon-costs.git"},
+  "bugs": {"url": "http://github.com/cmfatih/amazon-costs/issues"},
+  "license": "MIT",
+  "private": false,
+  "author": {"name": "cmfatih", "url": "http://github.com/cmfatih"},
+  "contributors": [
+  ],
+  "main": "./lib/amazon-costs.js",
+  "scripts": {
+    "test": "node ./test/test-all.js"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "dependencies": {
+    "request": "2.21.0"
+  }
+}
