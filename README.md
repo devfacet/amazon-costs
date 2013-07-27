@@ -80,3 +80,8 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
   }
 });
 ```
+
+### License
+
+Licensed under The MIT License (MIT) - http://www.opensource.org/licenses/mit-license.php  
+For the full copyright and license information, please view the LICENSE.txt file.
