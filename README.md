@@ -5,15 +5,15 @@
 ### Installation
 
 ```
-  npm install amazon-costs
+npm install amazon-costs
 ```
 
 ### Test
 
 ```
-  npm install amazon-costs
-  cd node_modules/amazon-costs
-  npm test
+npm install amazon-costs
+cd node_modules/amazon-costs
+npm test
 ```
 
 ### Example
