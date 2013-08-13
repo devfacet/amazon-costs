@@ -83,6 +83,6 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
 
 ### License
 
-Copyright (c) 2013 Fatih Cetinkaya (http://github.com/cmfatih/amazon-costs)
+Copyright (c) 2013 Fatih Cetinkaya (http://github.com/cmfatih/amazon-costs)  
 Licensed under The MIT License (MIT) - http://www.opensource.org/licenses/mit-license.php  
 For the full copyright and license information, please view the LICENSE.txt file.
