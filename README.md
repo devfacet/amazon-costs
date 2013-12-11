@@ -2,7 +2,7 @@
 
   [amazon-costs](http://github.com/cmfatih/amazon-costs) is a [node.js](http://nodejs.org) module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
 
-  amazon-costs on [NPM Registry](http://npmjs.org/package/amazon-costs)
+  amazon-costs on [npm registery](http://npmjs.org/package/amazon-costs)
 
 ### Installation
 
