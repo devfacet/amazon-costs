@@ -6,19 +6,24 @@
 
 ### Installation
 
+For latest published version.
 ```
 npm install amazon-costs
 ```
 
-### Test
-
+or for HEAD version
 ```
-npm install amazon-costs
-cd node_modules/amazon-costs
+git clone https://github.com/cmfatih/amazon-costs.git
+```
+
+### Usage
+
+#### Test
+```
 npm test
 ```
 
-### Example
+#### Example
 
 ```javascript
 var mAmzCosts = require('amazon-costs');
@@ -82,6 +87,10 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
   }
 });
 ```
+
+### Changelog
+
+For all notable changes see [CHANGELOG.md](https://github.com/cmfatih/amazon-costs/blob/master/CHANGELOG.md)
 
 ### License
 
