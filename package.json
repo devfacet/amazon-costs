@@ -30,7 +30,7 @@
     "test": "node ./test/test-all.js"
   },
   "engines": [
-    "node >= 1.10.21"
+    "node >= 0.10.21"
   ],
   "dependencies": {
     "request": "2.x"
