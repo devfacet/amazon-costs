@@ -5,6 +5,9 @@
  */
 
 // Init reqs
+/* jslint node: true */
+'use strict';
+
 var mAmzCosts   = require('../');   // amazon-costs module
 
 // Init vars
