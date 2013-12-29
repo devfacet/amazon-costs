@@ -1,9 +1,3 @@
-/*
- * Amazon Costs
- * Copyright (c) 2013 Fatih Cetinkaya (http://github.com/cmfatih/amazon-costs)
- * For the full copyright and license information, please view the LICENSE.txt file.
- */
-
 // Init reqs
 /* jslint node: true */
 'use strict';
@@ -23,7 +17,7 @@ var gASIN       = "B00BEZTMQ8",     // ASIN
 ;
 
 // Tests
-console.log("TESTS: test-all.js");
+console.log('test-all.js');
 
 // Test for ASIN search
 if(gTestList.ASIN === true) {
