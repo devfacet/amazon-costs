@@ -5,28 +5,28 @@
  */
 
 // Init reqs
-var mAmzCosts   = require('../');     // amazon-costs module
+var mAmzCosts   = require('../');   // amazon-costs module
 
 // Init vars
-var gASIN       = "B00BEZTMQ8",       // ASIN
-    gUPC        = "794043165344",     // UPC
-    gKeyword    = "The Hobbit",       // Keyword
+var gASIN       = "B00BEZTMQ8",     // ASIN
+    gUPC        = "794043165344",   // UPC
+    gKeyword    = "The Hobbit",     // Keyword
     gTestList   = {
-      ASIN: false, 
-      UPC: false, 
-      KEYWORD: false, 
+      ASIN: false,
+      UPC: false,
+      KEYWORD: false,
       COSTS: true
     }
 ;
 
 // Tests
-console.log(tidyOutput("TESTS: test-all.js"));
+console.log("TESTS: test-all.js");
 
 // Test for ASIN search
-if(gTestList.ASIN == true) {
+if(gTestList.ASIN === true) {
   mAmzCosts.productSearch(gASIN, function(err, res) {
 
-    console.log(tidyOutput("SEARCH:ASIN:" + gASIN));
+    console.log("SEARCH:ASIN:" + gASIN);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -38,10 +38,10 @@ if(gTestList.ASIN == true) {
 }
 
 // Test for UPC search
-if(gTestList.UPC == true) {
+if(gTestList.UPC === true) {
   mAmzCosts.productSearch(gUPC, function(err, res) {
 
-    console.log(tidyOutput("SEARCH:UPC:" + gUPC));
+    console.log("SEARCH:UPC:" + gUPC);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -53,10 +53,10 @@ if(gTestList.UPC == true) {
 }
 
 // Test for keyword search
-if(gTestList.KEYWORD == true) {
+if(gTestList.KEYWORD === true) {
   mAmzCosts.productSearch(gKeyword, function(err, res) {
 
-    console.log(tidyOutput("SEARCH:KEYWORD:" + gKeyword));
+    console.log("SEARCH:KEYWORD:" + gKeyword);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -68,16 +68,16 @@ if(gTestList.KEYWORD == true) {
 }
 
 // Test for costs
-if(gTestList.COSTS == true) {
+if(gTestList.COSTS === true) {
 
   mAmzCosts.productSearch(gASIN, function(err, res) {
 
-    console.log(tidyOutput("SEARCH:ASIN:" + gASIN));
+    console.log("SEARCH:ASIN:" + gASIN);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
 
-      if(res && res.items instanceof Array && res.items.length && res.items[0].asin == gASIN) {
+      if(res && res.items instanceof Array && res.items.length && res.items[0].asin === gASIN) {
 
         // FBA costs
         var pcOptFBA  = {
@@ -92,7 +92,7 @@ if(gTestList.COSTS == true) {
 
         mAmzCosts.productCosts(pcOptFBA, function(err, res) {
 
-          console.log(tidyOutput("COSTS:FBA:" + gASIN));
+          console.log("COSTS:FBA:" + gASIN);
 
           if(!err) {
             console.log(JSON.stringify(res, null, 2));
@@ -121,7 +121,7 @@ if(gTestList.COSTS == true) {
 
         mAmzCosts.productCosts(pcOptFBM, function(err, res) {
 
-          console.log(tidyOutput("COSTS:FBM:" + gASIN));
+          console.log("COSTS:FBM:" + gASIN);
 
           if(!err) {
             console.log(JSON.stringify(res, null, 2));
@@ -139,9 +139,4 @@ if(gTestList.COSTS == true) {
       console.log("ERROR!:" + err);
     }
   });
-}
-
-// for tidy output
-function tidyOutput(iText) {
-  return "\r\n========== " + (iText + '') + " ==========\r\n";
 }

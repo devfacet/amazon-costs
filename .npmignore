@@ -3,7 +3,9 @@
 # Examples
 #
 #   node_modules/
-#   .git/
+#   /.tmp-file-*
+#   /tmp-dir/*
+#   /symlink*
 #
 node_modules/
 sources/

@@ -3,6 +3,7 @@
 ### HEAD
 
 ```
+* 2013-12-29 - Tidy changes for test-all.js
 ```
 
 ### 0.0.2 (2013-12-12)
