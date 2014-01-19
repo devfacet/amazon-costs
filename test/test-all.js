@@ -23,7 +23,7 @@ console.log('test-all.js');
 if(gTestList.ASIN === true) {
   mAmzCosts.productSearch(gASIN, function(err, res) {
 
-    console.log("SEARCH:ASIN:" + gASIN);
+    console.log("ASIN:" + gASIN);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -38,7 +38,7 @@ if(gTestList.ASIN === true) {
 if(gTestList.UPC === true) {
   mAmzCosts.productSearch(gUPC, function(err, res) {
 
-    console.log("SEARCH:UPC:" + gUPC);
+    console.log("UPC:" + gUPC);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -53,7 +53,7 @@ if(gTestList.UPC === true) {
 if(gTestList.KEYWORD === true) {
   mAmzCosts.productSearch(gKeyword, function(err, res) {
 
-    console.log("SEARCH:KEYWORD:" + gKeyword);
+    console.log("KEYWORD:" + gKeyword);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -69,7 +69,7 @@ if(gTestList.COSTS === true) {
 
   mAmzCosts.productSearch(gASIN, function(err, res) {
 
-    console.log("SEARCH:ASIN:" + gASIN);
+    console.log("COSTS:" + gASIN);
 
     if(!err) {
       console.log(JSON.stringify(res, null, 2));
@@ -88,9 +88,6 @@ if(gTestList.COSTS === true) {
         };
 
         mAmzCosts.productCosts(pcOptFBA, function(err, res) {
-
-          console.log("COSTS:FBA:" + gASIN);
-
           if(!err) {
             console.log(JSON.stringify(res, null, 2));
           }
@@ -117,9 +114,6 @@ if(gTestList.COSTS === true) {
         };
 
         mAmzCosts.productCosts(pcOptFBM, function(err, res) {
-
-          console.log("COSTS:FBM:" + gASIN);
-
           if(!err) {
             console.log(JSON.stringify(res, null, 2));
           }
