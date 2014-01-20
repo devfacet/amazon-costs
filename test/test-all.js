@@ -2,12 +2,12 @@
 /* jslint node: true */
 'use strict';
 
-var mAmzCosts   = require('../');   // amazon-costs module
+var mAmzCosts   = require('../');
 
 // Init vars
-var gASIN       = "B00BEZTMQ8",     // ASIN
-    gUPC        = "794043165344",   // UPC
-    gKeyword    = "The Hobbit",     // Keyword
+var gASIN       = "B00BEZTMQ8",
+    gUPC        = "794043165344",
+    gKeyword    = "The Hobbit",
     gTestList   = {
       ASIN: false,
       UPC: false,
@@ -21,64 +21,59 @@ console.log('test-all.js');
 
 // Test for ASIN search
 if(gTestList.ASIN === true) {
-  mAmzCosts.productSearch(gASIN, function(err, res) {
-
+  mAmzCosts.productSearch(gASIN, function(err, data) {
     console.log("ASIN:" + gASIN);
 
     if(!err) {
-      console.log(JSON.stringify(res, null, 2));
+      console.log(JSON.stringify(data, null, 2));
     }
     else {
-      console.log("ERROR!:" + err);
+      console.log("ERROR!:" + JSON.stringify(err, null, 2));
     }
   });
 }
 
 // Test for UPC search
 if(gTestList.UPC === true) {
-  mAmzCosts.productSearch(gUPC, function(err, res) {
-
+  mAmzCosts.productSearch(gUPC, function(err, data) {
     console.log("UPC:" + gUPC);
 
     if(!err) {
-      console.log(JSON.stringify(res, null, 2));
+      console.log(JSON.stringify(data, null, 2));
     }
     else {
-      console.log("ERROR!:" + err);
+      console.log("ERROR!:" + JSON.stringify(err, null, 2));
     }
   });
 }
 
 // Test for keyword search
 if(gTestList.KEYWORD === true) {
-  mAmzCosts.productSearch(gKeyword, function(err, res) {
-
+  mAmzCosts.productSearch(gKeyword, function(err, data) {
     console.log("KEYWORD:" + gKeyword);
 
     if(!err) {
-      console.log(JSON.stringify(res, null, 2));
+      console.log(JSON.stringify(data, null, 2));
     }
     else {
-      console.log("ERROR!:" + err);
+      console.log("ERROR!:" + JSON.stringify(err, null, 2));
     }
   });
 }
 
 // Test for costs
 if(gTestList.COSTS === true) {
-
-  mAmzCosts.productSearch(gASIN, function(err, res) {
-
+  mAmzCosts.productSearch(gASIN, function(err, data) {
     console.log("COSTS:" + gASIN);
 
     if(!err) {
-      console.log(JSON.stringify(res, null, 2));
+      console.log(JSON.stringify(data, null, 2));
 
-      if(res && res.items instanceof Array && res.items.length && res.items[0].asin === gASIN) {
+      if(data && data.items instanceof Array && data.items.length && data.items[0].asin === gASIN) {
 
         // FBA costs
         var pcOptFBA  = {
-          product: res.items[0],
+          product: data.items[0],
           cost: {
             costType: 'FBA',
             productPrice: 25.00,
@@ -87,18 +82,18 @@ if(gTestList.COSTS === true) {
           }
         };
 
-        mAmzCosts.productCosts(pcOptFBA, function(err, res) {
+        mAmzCosts.productCosts(pcOptFBA, function(err, data) {
           if(!err) {
-            console.log(JSON.stringify(res, null, 2));
+            console.log(JSON.stringify(data, null, 2));
           }
           else {
-            console.log("ERROR!:" + err);
+            console.log("ERROR!:" + JSON.stringify(err, null, 2));
           }
         });
 
         // FBM costs
         var pcOptFBM  = {
-          product: res.items[0],
+          product: data.items[0],
           cost: {
             costType: 'FBM',
             productPrice: 25.00,
@@ -113,12 +108,12 @@ if(gTestList.COSTS === true) {
           }
         };
 
-        mAmzCosts.productCosts(pcOptFBM, function(err, res) {
+        mAmzCosts.productCosts(pcOptFBM, function(err, data) {
           if(!err) {
-            console.log(JSON.stringify(res, null, 2));
+            console.log(JSON.stringify(data, null, 2));
           }
           else {
-            console.log("ERROR!:" + err);
+            console.log("ERROR!:" + JSON.stringify(err, null, 2));
           }
         });
       }
@@ -127,7 +122,7 @@ if(gTestList.COSTS === true) {
       }
     }
     else {
-      console.log("ERROR!:" + err);
+      console.log("ERROR!:" + JSON.stringify(err, null, 2));
     }
   });
 }

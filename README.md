@@ -24,19 +24,62 @@ npm test
 ```
 
 #### Example
+
+##### Search
+```javascript
+mAmzCosts.productSearch('The Hobbit DVD', function(err, data) {
+  if(!err) {
+    console.log(JSON.stringify(data, null, 2));
+  }
+  else {
+    console.log("ERROR!:" + JSON.stringify(err, null, 2));
+  }
+});
+
+// Output
+/*
+{
+  "items": [
+    {
+      "link": "http://www.amazon.com/gp/product/B00BEZTMFY/ref=xx_xx_cont_xx/180-3685826-3917707",
+      "dimUnits": "inches",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51oyx9TCjVL._SL80_.jpg",
+      "subCategory": null,
+      "dimensions": {
+        "width": 5.3,
+        "length": 7.4,
+        "height": 0.6
+      },
+      "gl": "gl_dvd",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51oyx9TCjVL._SL120_.jpg",
+      "weightUnits": "pounds",
+      "productGroup": "74",
+      "weight": 0.2,
+      "asin": "B00BEZTMFY",
+      "whiteGlovesRequired": "N",
+      "title": "The Hobbit: An Unexpected Journey (Two-Disc Special Edition) (DVD + UltraViolet Digital Copy) [DVD]"
+    },
+    ...
+    ...
+  ]
+}
+*/
+```
+
+##### Costs
 ```javascript
 var mAmzCosts = require('amazon-costs');
 var gASIN     = "B00BEZTMQ8";
 
-mAmzCosts.productSearch(gASIN, function(err, res) {
+mAmzCosts.productSearch(gASIN, function(err, data) {
   if(!err) {
-    console.log(JSON.stringify(res, null, 2));
+    console.log(JSON.stringify(data, null, 2));
 
-    if(res && res.items instanceof Array && res.items.length && res.items[0].asin == gASIN) {
+    if(data && data.items instanceof Array && data.items.length && data.items[0].asin === gASIN) {
 
       // FBA costs
       var pcOptFBA  = {
-        product: res.items[0],
+        product: data.items[0],
         cost: {
           costType: 'FBA',
           productPrice: 25.00,
@@ -45,18 +88,18 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
         }
       };
 
-      mAmzCosts.productCosts(pcOptFBA, function(err, res) {
+      mAmzCosts.productCosts(pcOptFBA, function(err, data) {
         if(!err) {
-          console.log(JSON.stringify(res, null, 2));
+          console.log(JSON.stringify(data, null, 2));
         }
         else {
-          console.log("ERROR!:" + err);
+          console.log("ERROR!:" + JSON.stringify(err, null, 2));
         }
       });
 
       // FBM costs
       var pcOptFBM  = {
-        product: res.items[0],
+        product: data.items[0],
         cost: {
           costType: 'FBM',
           productPrice: 25.00,
@@ -71,18 +114,21 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
         }
       };
 
-      mAmzCosts.productCosts(pcOptFBM, function(err, res) {
+      mAmzCosts.productCosts(pcOptFBM, function(err, data) {
         if(!err) {
-          console.log(JSON.stringify(res, null, 2));
+          console.log(JSON.stringify(data, null, 2));
         }
         else {
-          console.log("ERROR!:" + err);
+          console.log("ERROR!:" + JSON.stringify(err, null, 2));
         }
       });
     }
+    else {
+      console.log("Product (" + gASIN + ") could not be found.");
+    }
   }
   else {
-    console.log("ERROR!:" + err);
+    console.log("ERROR!:" + JSON.stringify(err, null, 2));
   }
 });
 
@@ -91,7 +137,7 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
 {
   "items": [
     {
-      "link": "http://www.amazon.com/gp/product/B00BEZTMQ8/ref=xx_xx_cont_xx/184-0032892-4668728",
+      "link": "http://www.amazon.com/gp/product/B00BEZTMQ8/ref=xx_xx_cont_xx/186-1246243-6363763",
       "dimUnits": "inches",
       "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51nZpnQgUwL._SL80_.jpg",
       "subCategory": null,
@@ -119,32 +165,6 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
       "cost": {
         "merchant": {
           "price": 25,
-          "revenueTotal": 25,
-          "inbound-delivery": 1,
-          "prep-service": 1,
-          "fulfillmentTotal": 2
-        },
-        "amazon": {
-          "weightHandlingFee": "0.42",
-          "orderHandlingFee": 0,
-          "fbaDeliveryServicesFee": 0,
-          "commissionFee": "3.75",
-          "pickAndPackFee": "1",
-          "storageFee": "0.01",
-          "variableClosingFee": "0.8"
-        }
-      }
-    }
-  ],
-  "errors": null
-}
-{
-  "items": [
-    {
-      "asin": "B00BEZTMQ8",
-      "cost": {
-        "merchant": {
-          "price": 25,
           "shipping": 1,
           "order-handling": 1,
           "pick-pack": 1,
@@ -159,6 +179,32 @@ mAmzCosts.productSearch(gASIN, function(err, res) {
         "amazon": {
           "commissionFee": 3.75,
           "variableClosingFee": "1.35"
+        }
+      }
+    }
+  ],
+  "errors": null
+}
+{
+  "items": [
+    {
+      "asin": "B00BEZTMQ8",
+      "cost": {
+        "merchant": {
+          "price": 25,
+          "revenueTotal": 25,
+          "inbound-delivery": 1,
+          "prep-service": 1,
+          "fulfillmentTotal": 2
+        },
+        "amazon": {
+          "weightHandlingFee": "0.42",
+          "orderHandlingFee": 0,
+          "fbaDeliveryServicesFee": 0,
+          "commissionFee": "3.75",
+          "pickAndPackFee": "1",
+          "storageFee": "0.01",
+          "variableClosingFee": "0.8"
         }
       }
     }

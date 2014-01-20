@@ -5,13 +5,17 @@
 ```
 ```
 
+### 0.2.0 (2014-01-19)
+
+* Reimplementation for handling return and errors
+
 ### 0.1.0 (2014-01-19)
 
 * Stable release
 
 ### 0.0.2 (2013-12-12)
 
-* Additional JSHint options.
+* Additional JSHint options
 * .gitattributes
 * CHANGELOG.md
 
