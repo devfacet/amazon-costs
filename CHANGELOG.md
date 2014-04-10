@@ -5,6 +5,10 @@
 ```
 ```
 
+### 0.2.1 (2014-04-09)
+
+* Misc. changes
+
 ### 0.2.0 (2014-01-19)
 
 * Reimplementation for handling return and errors
