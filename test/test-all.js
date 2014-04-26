@@ -1,128 +1,143 @@
 // Init reqs
 /* jslint node: true */
+/* global describe: false */
+/* global it: false */
 'use strict';
 
-var mAmzCosts   = require('../');
-
-// Init vars
-var gASIN       = "B00BEZTMQ8",
-    gUPC        = "794043165344",
-    gKeyword    = "The Hobbit",
-    gTestList   = {
-      ASIN: false,
-      UPC: false,
-      KEYWORD: false,
-      COSTS: true
-    }
+var amzCosts  = require('../'),
+    expect    = require('chai').expect
 ;
 
 // Tests
-console.log('test-all.js');
 
-// Test for ASIN search
-if(gTestList.ASIN === true) {
-  mAmzCosts.productSearch(gASIN, function(err, data) {
-    console.log("ASIN:" + gASIN);
+// Test for amazon costs module
+describe('amzCosts', function() {
 
-    if(!err) {
-      console.log(JSON.stringify(data, null, 2));
-    }
-    else {
-      console.log("ERROR!:" + JSON.stringify(err, null, 2));
-    }
+  // Init vars
+  var asin  = 'B00BEZTMQ8',
+      result
+  ;
+
+  // Test for product search
+  describe('productSearch', function() {
+    it('should search for ASIN ' + asin, function(done) {
+
+      // Search product
+      amzCosts.productSearch(asin, function(err, data) {
+        if(err) {
+          done(err.message);
+          return;
+        }
+
+        expect(data).to.have.property('items');
+        expect(data.items).to.be.a('array');
+        expect(data.items[0]).to.be.a('object');
+        expect(data.items[0]).to.have.property('asin', asin);
+
+        result = data;
+        done();
+      });
+    });
   });
-}
 
-// Test for UPC search
-if(gTestList.UPC === true) {
-  mAmzCosts.productSearch(gUPC, function(err, data) {
-    console.log("UPC:" + gUPC);
-
-    if(!err) {
-      console.log(JSON.stringify(data, null, 2));
-    }
-    else {
-      console.log("ERROR!:" + JSON.stringify(err, null, 2));
-    }
-  });
-}
-
-// Test for keyword search
-if(gTestList.KEYWORD === true) {
-  mAmzCosts.productSearch(gKeyword, function(err, data) {
-    console.log("KEYWORD:" + gKeyword);
-
-    if(!err) {
-      console.log(JSON.stringify(data, null, 2));
-    }
-    else {
-      console.log("ERROR!:" + JSON.stringify(err, null, 2));
-    }
-  });
-}
-
-// Test for costs
-if(gTestList.COSTS === true) {
-  mAmzCosts.productSearch(gASIN, function(err, data) {
-    console.log("COSTS:" + gASIN);
-
-    if(!err) {
-      console.log(JSON.stringify(data, null, 2));
-
-      if(data && data.items instanceof Array && data.items.length && data.items[0].asin === gASIN) {
-
-        // FBA costs
-        var pcOptFBA  = {
-          product: data.items[0],
-          cost: {
-            costType: 'FBA',
-            productPrice: 25.00,
-            inboundDelivery: 1.00,
-            prepService: 1.00
-          }
-        };
-
-        mAmzCosts.productCosts(pcOptFBA, function(err, data) {
-          if(!err) {
-            console.log(JSON.stringify(data, null, 2));
-          }
-          else {
-            console.log("ERROR!:" + JSON.stringify(err, null, 2));
-          }
-        });
-
-        // FBM costs
-        var pcOptFBM  = {
-          product: data.items[0],
-          cost: {
-            costType: 'FBM',
-            productPrice: 25.00,
-            shipping: 1.00,
-            orderHandling: 1.00,
-            pickPack: 1.00,
-            outboundDelivery: 1.00,
-            storage: 1.00,
-            inboundDelivery: 1.00,
-            customerService: 1.00,
-            prepService: 1.00
-          }
-        };
-
-        mAmzCosts.productCosts(pcOptFBM, function(err, data) {
-          if(!err) {
-            console.log(JSON.stringify(data, null, 2));
-          }
-          else {
-            console.log("ERROR!:" + JSON.stringify(err, null, 2));
-          }
-        });
+  // Test for product search result
+  describe('productSearch result', function() {
+    it('should be valid for ASIN ' + asin, function(done) {
+      if(!result || !(result.items instanceof Array) || result.items[0] && result.items[0].asin != asin) {
+        done('Invalid product!');
+      } else {
+        done();
       }
-      else {
-        console.log("Product (" + gASIN + ") could not be found.");
-      }
-    }
-    else {
-      console.log("ERROR!:" + JSON.stringify(err, null, 2));
-    }
+    });
   });
-}
+
+  // Test for product costs - FBA
+  describe('productCosts', function() {
+    it('should calculate FBA costs for ASIN ' + asin, function(done) {
+
+      // Costs for FBA
+      amzCosts.productCosts({
+        product: result.items[0],
+        cost: {
+          costType: 'FBA',
+          productPrice: 25.00,
+          inboundDelivery: 1.00,
+          prepService: 1.00
+        }
+      }, function(err, data) {
+        if(err) {
+          done(err.message);
+          return;
+        }
+
+        expect(data).to.have.property('items');
+        expect(data.items).to.be.a('array');
+        expect(data.items[0]).to.be.a('object');
+        expect(data.items[0]).to.have.property('asin', asin);
+        expect(data.items[0]).to.have.property('cost');
+        expect(data.items[0].cost).to.be.a('object');
+        expect(data.items[0].cost).to.have.property('amazon');
+        expect(data.items[0].cost.amazon).to.be.a('object');
+        done();
+      });
+    });
+  });
+
+  // Test for product costs - FBM
+  describe('productCosts', function() {
+    it('should calculate FBM costs for ASIN ' + asin, function(done) {
+
+      // Costs for FBA
+      amzCosts.productCosts({
+        product: result.items[0],
+        cost: {
+          costType: 'FBM',
+          productPrice: 25.00,
+          shipping: 1.00,
+          orderHandling: 1.00,
+          pickPack: 1.00,
+          outboundDelivery: 1.00,
+          storage: 1.00,
+          inboundDelivery: 1.00,
+          customerService: 1.00,
+          prepService: 1.00
+        }
+      }, function(err, data) {
+        if(err) {
+          done(err.message);
+          return;
+        }
+
+        expect(data).to.have.property('items');
+        expect(data.items).to.be.a('array');
+        expect(data.items[0]).to.be.a('object');
+        expect(data.items[0]).to.have.property('asin', asin);
+        expect(data.items[0]).to.have.property('cost');
+        expect(data.items[0].cost).to.be.a('object');
+        expect(data.items[0].cost).to.have.property('merchant');
+        expect(data.items[0].cost.amazon).to.be.a('object');
+        done();
+      });
+    });
+  });
+
+  // Test for product tidy
+  describe('productTidy', function() {
+    it('should run without any error for ASIN ' + asin, function(done) {
+
+      // Tidy product
+      var prodTidy = amzCosts.productTidy(result.items[0]);
+
+      expect(prodTidy).to.be.a('object');
+      expect(prodTidy).to.have.property('asin', asin);
+      expect(prodTidy).to.have.property('weight');
+      expect(prodTidy.weight).to.be.a('object');
+      expect(prodTidy).to.have.property('dimension');
+      expect(prodTidy.dimension).to.be.a('object');
+      expect(prodTidy).to.have.property('other');
+      expect(prodTidy.other).to.be.a('object');
+
+      done();
+    });
+  });
+});
