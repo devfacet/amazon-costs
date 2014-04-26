@@ -1,17 +1,17 @@
 ## Amazon Costs
 
-  [amazon-costs](http://github.com/cmfatih/amazon-costs) is a [node.js](http://nodejs.org) module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
+[amazon-costs](http://github.com/cmfatih/amazon-costs) is a [node.js](http://nodejs.org) module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
 
-  amazon-costs on [npm registry](http://npmjs.org/package/amazon-costs)
+amazon-costs on [npm registry](http://npmjs.org/package/amazon-costs)  
 
 ### Installation
 
-For latest published version
+For latest release
 ```
 npm install amazon-costs
 ```
 
-or for HEAD version
+For HEAD
 ```
 git clone https://github.com/cmfatih/amazon-costs.git
 ```
@@ -23,13 +23,13 @@ git clone https://github.com/cmfatih/amazon-costs.git
 npm test
 ```
 
-#### Example
+#### Examples
 
-##### Search
+**Search**
 ```javascript
-var mAmzCosts = require('amazon-costs');
+var amzCosts = require('amazon-costs');
 
-mAmzCosts.productSearch('The Hobbit DVD', function(err, data) {
+amzCosts.productSearch('The Hobbit DVD', function(err, data) {
   if(!err) {
     console.log(JSON.stringify(data, null, 2));
   }
@@ -68,16 +68,16 @@ mAmzCosts.productSearch('The Hobbit DVD', function(err, data) {
 */
 ```
 
-##### Costs
+**Costs**
 ```javascript
-var mAmzCosts = require('amazon-costs');
-var gASIN     = "B00BEZTMQ8";
+var amzCosts  = require('amazon-costs');
+var asin      = "B00BEZTMQ8";
 
-mAmzCosts.productSearch(gASIN, function(err, data) {
+amzCosts.productSearch(asin, function(err, data) {
   if(!err) {
     console.log(JSON.stringify(data, null, 2));
 
-    if(data && data.items instanceof Array && data.items.length && data.items[0].asin === gASIN) {
+    if(data && data.items instanceof Array && data.items.length && data.items[0].asin === asin) {
 
       // FBA costs
       var pcOptFBA  = {
@@ -90,7 +90,7 @@ mAmzCosts.productSearch(gASIN, function(err, data) {
         }
       };
 
-      mAmzCosts.productCosts(pcOptFBA, function(err, data) {
+      amzCosts.productCosts(pcOptFBA, function(err, data) {
         if(!err) {
           console.log(JSON.stringify(data, null, 2));
         }
@@ -116,7 +116,7 @@ mAmzCosts.productSearch(gASIN, function(err, data) {
         }
       };
 
-      mAmzCosts.productCosts(pcOptFBM, function(err, data) {
+      amzCosts.productCosts(pcOptFBM, function(err, data) {
         if(!err) {
           console.log(JSON.stringify(data, null, 2));
         }
@@ -126,7 +126,7 @@ mAmzCosts.productSearch(gASIN, function(err, data) {
       });
     }
     else {
-      console.log("Product (" + gASIN + ") could not be found.");
+      console.log("Product (" + asin + ") could not be found.");
     }
   }
   else {
