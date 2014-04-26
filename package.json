@@ -27,12 +27,16 @@
   "contributors": [],
   "main": "./lib/amazon-costs.js",
   "scripts": {
-    "test": "node ./test/test-all.js"
+    "test": "node ./node_modules/mocha/bin/mocha --timeout 5000 --slow 2000 --reporter spec test/test-all.js"
   },
   "engines": [
     "node >= 0.10.21"
   ],
   "dependencies": {
     "request": "2.x"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
   }
 }
