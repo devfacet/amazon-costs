@@ -16,6 +16,7 @@ For HEAD
 ```
 git clone https://github.com/cmfatih/amazon-costs.git
 ```
+[![Build Status](https://travis-ci.org/cmfatih/amazon-costs.svg?branch=master)](https://travis-ci.org/cmfatih/amazon-costs)
 
 ### Usage
 
