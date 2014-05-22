@@ -1,9 +1,10 @@
 ## Amazon Costs
 
-[amazon-costs](http://github.com/cmfatih/amazon-costs) is a [node.js](http://nodejs.org) module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
+[amazon-costs](http://github.com/cmfatih/amazon-costs) is a Node.js module for 
+retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
 
-amazon-costs on [npm registry](http://npmjs.org/package/amazon-costs)  
-[![NPM](https://nodei.co/npm/amazon-costs.png?compact=true)](https://nodei.co/npm/amazon-costs/)
+[![Build Status][travis-image]][travis-url] | [![NPM][npm-image]][npm-url]
+---------- | ----------
 
 ### Installation
 
@@ -16,7 +17,6 @@ For HEAD
 ```
 git clone https://github.com/cmfatih/amazon-costs.git
 ```
-[![Build Status](https://travis-ci.org/cmfatih/amazon-costs.svg?branch=master)](https://travis-ci.org/cmfatih/amazon-costs)
 
 ### Usage
 
@@ -213,3 +213,9 @@ For all notable changes see [CHANGELOG.md](https://github.com/cmfatih/amazon-cos
 Copyright (c) 2013 Fatih Cetinkaya (http://github.com/cmfatih/amazon-costs)  
 Licensed under The MIT License (MIT)  
 For the full copyright and license information, please view the LICENSE.txt file.
+
+[npm-url]: http://npmjs.org/package/amazon-costs
+[npm-image]: https://badge.fury.io/js/amazon-costs.png
+
+[travis-url]: https://travis-ci.org/cmfatih/amazon-costs
+[travis-image]: https://travis-ci.org/cmfatih/amazon-costs.svg?branch=master
