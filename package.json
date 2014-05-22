@@ -1,6 +1,6 @@
 {
   "name": "amazon-costs",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Amazon Costs module can be used for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.",
   "keywords": [
     "amazon",
