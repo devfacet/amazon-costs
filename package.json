@@ -1,6 +1,6 @@
 {
   "name": "amazon-costs",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Amazon Costs module can be used for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.",
   "keywords": [
     "amazon",
@@ -30,13 +30,13 @@
     "test": "node ./node_modules/mocha/bin/mocha --timeout 5000 --slow 2000 --reporter spec test/test-all.js"
   },
   "engines": [
-    "node >= 0.10.21"
+    "node >= 0.10.0"
   ],
   "dependencies": {
     "request": "2.x"
   },
   "devDependencies": {
-    "chai": "*",
-    "mocha": "*"
+    "mocha": "1.20.x",
+    "chai": "1.9.x"
   }
 }
