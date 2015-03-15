@@ -1,6 +1,6 @@
 {
   "name": "amazon-costs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Amazon Costs is a module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.",
   "keywords": [
     "amazon",
