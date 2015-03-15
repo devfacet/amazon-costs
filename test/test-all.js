@@ -1,22 +1,17 @@
-// Init reqs
 /* jslint node: true */
-/* global describe: false */
-/* global it: false */
+/* global describe: false, it: false */
 'use strict';
 
-var amzCosts  = require('../'),
-    expect    = require('chai').expect
-;
+var amzCosts = require('../'),
+    expect   = require('chai').expect;
 
 // Tests
 
-// Test for amazon costs module
 describe('amzCosts', function() {
 
   // Init vars
   var asin  = 'B00BEZTMQ8',
-      result
-  ;
+      result;
 
   // Test for product search
   describe('productSearch', function() {
@@ -43,7 +38,7 @@ describe('amzCosts', function() {
   // Test for product search result
   describe('productSearch result', function() {
     it('should be valid for ASIN ' + asin, function(done) {
-      if(!result || !(result.items instanceof Array) || result.items[0] && result.items[0].asin != asin) {
+      if(!result || !(result.items instanceof Array) || result.items[0] && result.items[0].asin !== asin) {
         done('Invalid product!');
       } else {
         done();
@@ -140,4 +135,5 @@ describe('amzCosts', function() {
       done();
     });
   });
+
 });
