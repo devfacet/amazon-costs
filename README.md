@@ -1,29 +1,17 @@
 ## Amazon Costs
-[![Build Status][travis-image]][travis-url] [![NPM][npm-image]][npm-url]
 
-[amazon-costs](http://github.com/cmfatih/amazon-costs) is a Node.js module for 
-retrieving Amazon product information and calculating costs for fulfillment and merchant channels.  
+[![NPM][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+
+Amazon Costs is a module for retrieving Amazon product information and calculating costs for
+fulfillment and merchant channels.
 
 ### Installation
 
-For latest release
 ```
 npm install amazon-costs
 ```
 
-For HEAD
-```
-git clone https://github.com/cmfatih/amazon-costs.git
-```
-
 ### Usage
-
-#### Test
-```
-npm test
-```
-
-#### Examples
 
 **Search**
 ```javascript
@@ -202,13 +190,8 @@ amzCosts.productSearch(asin, function(err, data) {
 */
 ```
 
-### Changelog
-
-For all notable changes see [CHANGELOG.md](https://github.com/cmfatih/amazon-costs/blob/master/CHANGELOG.md)
-
 ### License
 
-Copyright (c) 2013 Fatih Cetinkaya (http://github.com/cmfatih/amazon-costs)  
 Licensed under The MIT License (MIT)  
 For the full copyright and license information, please view the LICENSE.txt file.
 
