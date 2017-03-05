@@ -1,6 +1,6 @@
 {
   "name": "amazon-costs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels",
   "main": "index.js",
   "scripts": {
