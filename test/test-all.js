@@ -15,7 +15,7 @@ describe('amzCosts', function() {
 
   // Test for product search
   describe('productSearch', function() {
-    it('should search for ASIN ' + asin, function(done) {
+    it.skip('should search for ASIN ' + asin, function(done) {
 
       // Search product
       amzCosts.productSearch(asin, function(err, data) {
@@ -37,7 +37,7 @@ describe('amzCosts', function() {
 
   // Test for product search result
   describe('productSearch result', function() {
-    it('should be valid for ASIN ' + asin, function(done) {
+    it.skip('should be valid for ASIN ' + asin, function(done) {
       if(!result || !(result.items instanceof Array) || result.items[0] && result.items[0].asin !== asin) {
         done('Invalid product!');
       } else {
@@ -48,7 +48,7 @@ describe('amzCosts', function() {
 
   // Test for product costs - FBA
   describe('productCosts', function() {
-    it('should calculate FBA costs for ASIN ' + asin, function(done) {
+    it.skip('should calculate FBA costs for ASIN ' + asin, function(done) {
 
       // Costs for FBA
       amzCosts.productCosts({
@@ -80,7 +80,7 @@ describe('amzCosts', function() {
 
   // Test for product costs - FBM
   describe('productCosts', function() {
-    it('should calculate FBM costs for ASIN ' + asin, function(done) {
+    it.skip('should calculate FBM costs for ASIN ' + asin, function(done) {
 
       // Costs for FBA
       amzCosts.productCosts({
@@ -118,7 +118,7 @@ describe('amzCosts', function() {
 
   // Test for product tidy
   describe('productTidy', function() {
-    it('should run without any error for ASIN ' + asin, function(done) {
+    it.skip('should run without any error for ASIN ' + asin, function(done) {
 
       // Tidy product
       var prodTidy = amzCosts.productTidy(result.items[0]);

@@ -1,19 +1,20 @@
-## Amazon Costs
+# Amazon Costs
 
 [![NPM][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Amazon Costs is a module for retrieving Amazon product information and calculating costs for
 fulfillment and merchant channels.
 
-### Installation
+## Installation
 
-```
+```bash
 npm install amazon-costs
 ```
 
-### Usage
+## Usage
 
-**Search**
+### Search
+
 ```javascript
 var amzCosts = require('amazon-costs');
 
@@ -58,7 +59,8 @@ amzCosts.productSearch('The Hobbit DVD', function(err, data) {
 */
 ```
 
-**Costs**
+### Cost
+
 ```javascript
 var amzCosts  = require('amazon-costs');
 var asin      = 'B00BEZTMQ8';
@@ -190,13 +192,13 @@ amzCosts.productSearch(asin, function(err, data) {
 */
 ```
 
-### License
+## License
 
 Licensed under The MIT License (MIT)  
 For the full copyright and license information, please view the LICENSE.txt file.
 
 [npm-url]: http://npmjs.org/package/amazon-costs
-[npm-image]: https://badge.fury.io/js/amazon-costs.png
+[npm-image]: https://badge.fury.io/js/amazon-costs.svg
 
-[travis-url]: https://travis-ci.org/cmfatih/amazon-costs
-[travis-image]: https://travis-ci.org/cmfatih/amazon-costs.svg?branch=master
+[travis-url]: https://travis-ci.org/devfacet/amazon-costs
+[travis-image]: https://travis-ci.org/devfacet/amazon-costs.svg?branch=master

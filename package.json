@@ -1,7 +1,15 @@
 {
   "name": "amazon-costs",
   "version": "1.0.1",
-  "description": "Amazon Costs is a module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels.",
+  "description": "A module for retrieving Amazon product information and calculating costs for fulfillment and merchant channels",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha --timeout 5000 --slow 2000 --reporter spec test/test-all.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devfacet/amazon-costs.git"
+  },
   "keywords": [
     "amazon",
     "costs",
@@ -10,33 +18,14 @@
     "fba",
     "fbm"
   ],
-  "homepage": "http://github.com/cmfatih/amazon-costs",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cmfatih/amazon-costs.git"
-  },
-  "bugs": {
-    "url": "http://github.com/cmfatih/amazon-costs/issues"
-  },
+  "author": "devfacet",
   "license": "MIT",
-  "private": false,
-  "author": {
-    "name": "cmfatih",
-    "url": "http://github.com/cmfatih"
-  },
-  "contributors": [],
-  "main": "./lib/amazon-costs.js",
-  "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha --timeout 5000 --slow 2000 --reporter spec test/test-all.js"
-  },
-  "engines": [
-    "node >= 0.10.0"
-  ],
+  "homepage": "http://github.com/devfacet/amazon-costs",
   "dependencies": {
     "request": "2.x"
   },
   "devDependencies": {
-    "mocha": "2.2.x",
-    "chai": "2.1.x"
+    "mocha": "3.2.x",
+    "chai": "3.5.x"
   }
 }
